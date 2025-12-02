@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Dashboard - Stock Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>💊 Pharmacy Dashboard</h1>
+            <p class="subtitle">Stock Management System</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="inventory">Inventory</button>
+            <button class="tab-btn" data-tab="add-medicine">Add Medicine</button>
+            <button class="tab-btn" data-tab="alerts">Alerts</button>
+        </nav>
+
+        <!-- Overview Tab -->
+        <section id="overview" class="tab-content active">
+            <!-- Overview Cards -->
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Total Medicines</h3>
+                    <p class="card-value" id="totalMedicines">0</p>
+                    <span class="card-label">In Stock</span>
+                </div>
+                <div class="card">
+                    <h3>Low Stock Items</h3>
+                    <p class="card-value warning" id="lowStockCount">0</p>
+                    <span class="card-label">Needs Reorder</span>
+                </div>
+                <div class="card">
+                    <h3>Today's Sales</h3>
+                    <p class="card-value" id="todaysSales">0</p>
+                    <span class="card-label">Transactions</span>
+                </div>
+                <div class="card">
+                    <h3>Total Revenue</h3>
+                    <p class="card-value success" id="totalRevenue">$0.00</p>
+                    <span class="card-label">All Time</span>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search medicines by name..."
+                    class="search-input"
+                >
+            </div>
+
+            <!-- Sales Chart -->
+            <div class="chart-container">
+                <h2>Sales Summary</h2>
+                <canvas id="salesChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Inventory Tab -->
+        <section id="inventory" class="tab-content">
+            <h2>Medicine Inventory</h2>
+            <div class="table-container">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Medicine Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Expiry Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medicineTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Add Medicine Tab -->
+        <section id="add-medicine" class="tab-content">
+            <h2>Add New Medicine</h2>
+            <form id="addMedicineForm" class="form-container">
+                <div class="form-group">
+                    <label for="medicineName">Medicine Name *</label>
+                    <input 
+                        type="text" 
+                        id="medicineName" 
+                        required 
+                        placeholder="e.g., Paracetamol"
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="medicineQuantity">Quantity *</label>
+                        <input 
+                            type="number" 
+                            id="medicineQuantity" 
+                            required 
+                            min="0"
+                            placeholder="0"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="medicinePrice">Price (USD) *</label>
+                        <input 
+                            type="number" 
+                            id="medicinePrice" 
+                            required 
+                            min="0" 
+                            step="0.01"
+                            placeholder="0.00"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="medicineExpiry">Expiry Date *</label>
+                        <input 
+                            type="date" 
+                            id="medicineExpiry" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="medicineCategory">Category</label>
+                        <input 
+                            type="text" 
+                            id="medicineCategory" 
+                            placeholder="e.g., Pain Relief"
+                        >
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Medicine</button>
+            </form>
+        </section>
+
+        <!-- Alerts Tab -->
+        <section id="alerts" class="tab-content">
+            <h2>⚠️ Low Stock & Expiry Alerts</h2>
+            <div id="alertsContainer" class="alerts-container">
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
