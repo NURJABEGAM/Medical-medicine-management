@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light Theme Colors -->
+    <color name="seed">@color/cyan_primary</color>
+    
+    <!-- Primary Colors -->
+    <color name="cyan_primary">#00BCD4</color>
+    <color name="cyan_dark">#0097A7</color>
+    <color name="cyan_light">#4DD0E1</color>
+    
+    <color name="purple_primary">#9C27B0</color>
+    <color name="purple_dark">#7B1FA2</color>
+    <color name="purple_light">#BA68C8</color>
+    
+    <!-- Semantic Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Neutral Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="true_black">#000000</color>
+    
+    <!-- Gray Scale -->
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+    
+    <!-- Glass Effect Colors (with alpha) -->
+    <color name="glass_light">#1AFFFFFF</color>
+    <color name="glass_medium">#33FFFFFF</color>
+    <color name="glass_dark">#1A000000</color>
+    <color name="glass_border">#33FFFFFF</color>
+    
+    <!-- Overlay Colors -->
+    <color name="overlay_dark">#CC000000</color>
+    <color name="overlay_medium">#80000000</color>
+    <color name="overlay_light">#40000000</color>
+    
+    <!-- Status Bar & Navigation Bar -->
+    <color name="status_bar_light">#FFFFFF</color>
+    <color name="status_bar_dark">#000000</color>
+    
+    <!-- Material 3 Default Colors -->
+    <color name="md_theme_light_primary">#006A6A</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#9CF1F1</color>
+    <color name="md_theme_light_onPrimaryContainer">#002020</color>
+    
+    <color name="md_theme_dark_primary">#80D5D4</color>
+    <color name="md_theme_dark_onPrimary">#003738</color>
+    <color name="md_theme_dark_primaryContainer">#004F50</color>
+    <color name="md_theme_dark_onPrimaryContainer">#9CF1F1</color>
+    
+    <!-- Transparent -->
+    <color name="transparent">#00000000</color>
+</resources>

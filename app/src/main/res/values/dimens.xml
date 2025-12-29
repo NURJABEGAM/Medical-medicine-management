@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing -->
+    <dimen name="spacing_xxs">2dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+    
+    <!-- Border Radius -->
+    <dimen name="radius_xs">4dp</dimen>
+    <dimen name="radius_sm">8dp</dimen>
+    <dimen name="radius_md">12dp</dimen>
+    <dimen name="radius_lg">16dp</dimen>
+    <dimen name="radius_xl">24dp</dimen>
+    <dimen name="radius_xxl">32dp</dimen>
+    <dimen name="radius_full">999dp</dimen>
+    
+    <!-- Glass Effect -->
+    <dimen name="glass_blur_radius">20dp</dimen>
+    <dimen name="glass_border_width">1dp</dimen>
+    <dimen name="glass_elevation">8dp</dimen>
+    
+    <!-- Icon Sizes -->
+    <dimen name="icon_xs">16dp</dimen>
+    <dimen name="icon_sm">20dp</dimen>
+    <dimen name="icon_md">24dp</dimen>
+    <dimen name="icon_lg">32dp</dimen>
+    <dimen name="icon_xl">48dp</dimen>
+    <dimen name="icon_xxl">64dp</dimen>
+    
+    <!-- Button Sizes -->
+    <dimen name="button_height_sm">36dp</dimen>
+    <dimen name="button_height_md">48dp</dimen>
+    <dimen name="button_height_lg">56dp</dimen>
+    <dimen name="button_min_width">88dp</dimen>
+    
+    <!-- Card Sizes -->
+    <dimen name="card_min_height">120dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    
+    <!-- Navigation -->
+    <dimen name="nav_bar_height">56dp</dimen>
+    <dimen name="tab_bar_height">64dp</dimen>
+    <dimen name="bottom_nav_height">80dp</dimen>
+    
+    <!-- Player -->
+    <dimen name="player_control_panel_height">120dp</dimen>
+    <dimen name="player_progress_height">4dp</dimen>
+    <dimen name="player_button_size">48dp</dimen>
+    <dimen name="player_large_button_size">64dp</dimen>
+    
+    <!-- Video Thumbnail -->
+    <dimen name="video_thumbnail_height">180dp</dimen>
+    <dimen name="video_thumbnail_aspect_ratio">1.777</dimen>
+    
+    <!-- Text Sizes (Material 3 Scale) -->
+    <dimen name="text_display_large">57sp</dimen>
+    <dimen name="text_display_medium">45sp</dimen>
+    <dimen name="text_display_small">36sp</dimen>
+    <dimen name="text_headline_large">32sp</dimen>
+    <dimen name="text_headline_medium">28sp</dimen>
+    <dimen name="text_headline_small">24sp</dimen>
+    <dimen name="text_title_large">22sp</dimen>
+    <dimen name="text_title_medium">16sp</dimen>
+    <dimen name="text_title_small">14sp</dimen>
+    <dimen name="text_body_large">16sp</dimen>
+    <dimen name="text_body_medium">14sp</dimen>
+    <dimen name="text_body_small">12sp</dimen>
+    <dimen name="text_label_large">14sp</dimen>
+    <dimen name="text_label_medium">12sp</dimen>
+    <dimen name="text_label_small">11sp</dimen>
+</resources>
