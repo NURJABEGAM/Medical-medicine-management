@@ -1,283 +1,346 @@
-# 💊 Pharmacy Dashboard - Demo
+# AX Player - Advanced Android Video Player
 
-A responsive, fully-functional pharmacy stock management dashboard built with vanilla HTML, CSS, and JavaScript. Perfect for visualizing features and getting feedback on the complete pharmacy management system.
+<div align="center">
 
-## 🎯 Features
+![Android](https://img.shields.io/badge/Android-16%20(SDK%2035)-green)
+![Kotlin](https://img.shields.io/badge/Kotlin-2.1.0-blue)
+![Compose](https://img.shields.io/badge/Jetpack%20Compose-2025.01.00-brightgreen)
+![Media3](https://img.shields.io/badge/Media3-1.5.0-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-### Dashboard Overview
-- **Overview Cards**: Display total medicines, low stock items, today's sales, and total revenue
-- **Sales Chart**: Visual representation of top-selling medicines using Chart.js
-- **Real-time Metrics**: Live updates as you manage inventory
+A modern, feature-rich Android video player with glassmorphism UI design, iOS-style aesthetics, and powerful playback capabilities powered by ExoPlayer (Media3).
 
-### Inventory Management
-- **Complete Inventory Table**: Browse all medicines with details (name, quantity, price, expiry date, status)
-- **Quick Search**: Filter medicines by name or category
-- **Status Indicators**: 
-  - ✅ In Stock (>10 units)
-  - ⚠️ Low Stock (<10 units)
-  - ❌ Expired (past expiry date)
+</div>
 
-### Medicine Management
-- **Add New Medicine**: Quick form to add medicines to inventory
-- **Edit Medicine**: Update existing medicine details
-- **Sell Medicine**: One-click selling that records transactions
-- **Delete Medicine**: Remove medicines from stock
+## ✨ Features
 
-### Smart Alerts
-- **Low Stock Alerts**: Medicines with <10 units
-- **Expiry Warnings**: Medicines expiring within 30 days
-- **Expired Alerts**: Medicines past their expiry date
-- **Priority-based Sorting**: Critical alerts shown first
+### 🎬 Core Playback
+- **ExoPlayer Integration**: Industry-leading video playback using AndroidX Media3
+- **Format Support**: MP4, MKV, AVI, MOV, FLV, and more
+- **Hardware Acceleration**: GPU-powered video decoding
+- **Resume Playback**: Continue watching from where you left off
+- **Playback Speed Control**: 0.25x to 2.0x speed adjustment
+- **Background Playback**: Continue audio playback in background
 
-### Data Persistence
-- **Local Storage**: All data persists in your browser
-- **Automatic Backups**: Data saved with every action
-- **Sample Data**: Pre-populated with 15 realistic medicines
+### 🎨 UI/UX Design
+- **Glassmorphism Effects**: Modern frosted glass UI components
+- **iOS-Style Design**: Premium, minimalist aesthetics
+- **Material Design 3**: Latest Material You theming
+- **Dark/Light Modes**: Full theme support
+- **OLED Optimization**: True black mode for battery savings
+- **Smooth Animations**: 60 FPS fluid transitions
+- **Haptic Feedback**: Touch response vibrations
+
+### 🎮 Gesture Controls
+- **Double Tap Seek**: Quick 10/15/30s forward/backward
+- **Swipe Gestures**: Volume (right) and brightness (left) control
+- **Pinch to Zoom**: Video zoom functionality
+- **Tap to Show/Hide**: Auto-hiding player controls (5s timeout)
+
+### 📚 Video Library
+- **Grid View**: Beautiful video thumbnail grid
+- **Search**: Fast video search by name
+- **Sort Options**: By name, date, duration, or size
+- **Favorites**: Mark videos for quick access
+- **Recent Videos**: Quick access to recently played
+- **Metadata Display**: Duration, size, resolution info
+
+### ⚙️ Settings & Customization
+- **Playback Settings**: Resume, auto-play next, default speed
+- **Display Settings**: Theme, subtitle size, screen timeout
+- **Gesture Settings**: Configure all gesture controls
+- **Notification Settings**: Customizable playback notifications
+- **Storage Management**: Cache control and clearing
+
+### 🔒 Privacy & Security
+- **Scoped Storage**: Android 11+ compliant
+- **Encrypted Preferences**: Secure settings storage
+- **Permission Management**: Runtime permission requests
+- **No Analytics Tracking**: Privacy-first approach (optional Firebase)
+
+## 🏗️ Architecture
+
+### Clean Architecture (Domain/Data/Presentation)
+
+```
+app/
+├── domain/                  # Business Logic Layer
+│   ├── entity/             # Domain models (Video, PlaybackState, UserPreferences)
+│   ├── repository/         # Repository interfaces
+│   └── usecase/            # Business use cases
+│
+├── data/                   # Data Layer
+│   ├── db/                 # Room database (VideoEntity, VideoDao)
+│   ├── datasource/         # Data sources (LocalVideoDataSource)
+│   ├── repository/         # Repository implementations
+│   └── preferences/        # DataStore preferences manager
+│
+├── presentation/           # UI Layer
+│   ├── theme/              # Compose theming (Color, Typography, Theme)
+│   ├── components/         # Reusable UI components (GlassComponents)
+│   ├── navigation/         # Navigation setup
+│   ├── player/             # Player screen (PlayerScreen, PlayerViewModel)
+│   ├── library/            # Library screen (LibraryScreen, LibraryViewModel)
+│   ├── settings/           # Settings screen (SettingsScreen, SettingsViewModel)
+│   └── MainActivity.kt
+│
+└── di/                     # Dependency Injection (Hilt modules)
+```
+
+### Design Patterns
+- **MVVM**: Model-View-ViewModel with StateFlow
+- **Repository Pattern**: Data abstraction layer
+- **Use Case Pattern**: Single responsibility business logic
+- **Dependency Injection**: Hilt for automatic DI
+- **Observer Pattern**: Flow/StateFlow for reactive updates
+
+## 🛠️ Tech Stack
+
+### Core
+- **Language**: Kotlin 2.1.0
+- **UI Framework**: Jetpack Compose 2025.01.00
+- **Video Player**: AndroidX Media3 (ExoPlayer) 1.5.0
+- **Architecture**: AndroidX Lifecycle, ViewModel, Navigation
+
+### Data & Storage
+- **Database**: Room 2.6.1
+- **Preferences**: DataStore 1.1.1
+- **Security**: AndroidX Security Crypto 1.1.0-alpha06
+- **Image Loading**: Coil 2.7.0 (with video support)
+
+### Dependency Injection
+- **DI Framework**: Dagger Hilt 2.53.1
+- **Compiler**: KSP 2.1.0-1.0.29
+
+### Firebase (Optional)
+- **Analytics**: Firebase Analytics 22.1.2
+- **Crashlytics**: Firebase Crashlytics 19.2.1
+- **Remote Config**: Firebase Config
+- **Performance**: Firebase Performance Monitoring
+
+### Development Tools
+- **Build Tool**: Gradle 8.7.3
+- **Desugaring**: Core Library Desugaring 2.1.3
+- **Logging**: Timber 5.0.1
+- **Permissions**: Accompanist Permissions 0.36.0
+
+## 📋 Requirements
+
+- **Min SDK**: 26 (Android 8.0 Oreo)
+- **Target SDK**: 35 (Android 16)
+- **Compile SDK**: 35
+- **Java Version**: 17
+- **Kotlin Version**: 2.1.0
 
 ## 🚀 Getting Started
 
-### Installation
-No installation required! This is a static site that works directly in your browser.
-
-### Running Locally
-1. Clone the repository or download the files
-2. Open `index.html` in your web browser
-3. Start managing medicines!
-
-### Deploying to GitHub Pages
-1. Push the code to a GitHub repository
-2. Go to repository Settings → Pages
-3. Select `main` branch as the source
-4. Your dashboard will be live at `https://yourusername.github.io/repository-name`
-
-## 📊 Dashboard Components
-
-### Overview Cards Section
-- **Total Medicines**: Count of all medicines in inventory
-- **Low Stock Items**: Count of medicines with <10 units
-- **Today's Sales**: Number of transactions processed today
-- **Total Revenue**: Total sales amount from all transactions
-
-### Sales Chart
-Bar chart showing the top 8 best-selling medicines with transaction counts.
-
-### Inventory Table
-Comprehensive table with:
-- Medicine Name
-- Current Quantity (in units)
-- Unit Price (USD)
-- Expiry Date
-- Status Badge (In Stock/Low/Expired)
-- Action Buttons (Sell/Edit/Delete)
-
-### Add Medicine Form
-- Medicine Name (required)
-- Quantity (required)
-- Price in USD (required)
-- Expiry Date (required)
-- Category (optional)
-
-### Alerts Section
-Displays all active alerts:
-- Expired items (red alert)
-- Items expiring soon (orange alert)
-- Low stock items (orange alert)
-
-## 💾 Data Management
-
-### Local Storage
-All data is stored in browser's local storage:
-- Medicines inventory
-- Sales history
-- Custom configuration
-
-### Sample Data
-Pre-populated with 15 realistic medicines including:
-- Pain relief medications (Paracetamol, Ibuprofen, Aspirin)
-- Antibiotics (Amoxicillin)
-- Chronic disease medications (Metformin, Lisinopril, Atorvastatin)
-- Allergy medications (Cetirizine, Loratadine)
-- Respiratory medications (Salbutamol)
-- Supplements (Vitamin C)
-- Medical supplies (Insulin syringes, Bandages)
-
-### Browser DevTools
-You can manage data through browser console:
-
-```javascript
-// View all medicines
-console.log(allMedicines);
-
-// Reset to sample data
-resetToSampleData();
-
-// Export data
-exportData();
-
-// Clear all data
-localStorage.removeItem('pharmacy_medicines');
-localStorage.removeItem('pharmacy_sales_history');
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/axplayer.git
+cd axplayer
 ```
 
-## 🎨 Design Features
+### 2. Open in Android Studio
+- Android Studio Ladybug | 2024.2.1 or newer
+- Install Kotlin plugin if not already installed
 
-### Responsive Design
-- Desktop optimized (1400px max width)
-- Tablet friendly (768px breakpoint)
-- Mobile optimized (480px breakpoint)
-- Touch-friendly buttons and controls
+### 3. Firebase Setup (Optional)
+If you want to use Firebase features:
+1. Create a Firebase project at https://console.firebase.google.com
+2. Download `google-services.json`
+3. Place it in `app/` directory
+4. Enable Analytics, Crashlytics in Firebase console
 
-### User Experience
-- Smooth animations and transitions
-- Clear visual hierarchy
-- Intuitive navigation with tabs
-- Real-time form validation
-- Success/error notifications
-- Status badges with color coding
+### 4. Build & Run
+```bash
+# Debug build
+./gradlew assembleDebug
 
-### Color Scheme
-- **Primary Blue**: #2563eb (navigation, primary actions)
-- **Success Green**: #10b981 (in-stock items)
-- **Warning Orange**: #f59e0b (low stock alerts)
-- **Danger Red**: #ef4444 (expired items)
-- **Light Gray**: #f3f4f6 (backgrounds)
+# Release build (requires signing config)
+./gradlew assembleRelease
 
-## 📱 Navigation
+# Install on connected device
+./gradlew installDebug
+```
 
-The dashboard has 4 main sections accessible via tabs:
+### 5. Run on Device/Emulator
+- Connect Android device or start emulator
+- Click Run in Android Studio
+- Select target device
+- App will install and launch
 
-1. **Overview**: Dashboard cards, search, and sales chart
-2. **Inventory**: Complete medicine inventory table
-3. **Add Medicine**: Form to add or edit medicines
-4. **Alerts**: Low stock and expiry notifications
+## 📱 Screens
 
-## 🔧 Technical Stack
+### 1. Library Screen
+- Displays all videos in grid layout
+- Search, filter, and sort functionality
+- Favorite marking
+- Permission request UI
 
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with CSS Grid and Flexbox
-- **Vanilla JavaScript**: No frameworks, pure ES6+
-- **Chart.js 3.9**: Beautiful data visualization
-- **Local Storage API**: Browser-based persistence
-- **Responsive Design**: Mobile-first approach
+### 2. Player Screen
+- Full-screen video playback
+- Glassmorphism control panel
+- Gesture controls
+- Progress bar with timestamps
+- Play/pause, seek controls
 
-## 📋 Sample Data
+### 3. Settings Screen
+- Organized settings sections
+- Glass card UI components
+- Toggle switches for preferences
+- Real-time updates
 
-The dashboard comes with 15 pre-loaded medicines:
+## 🎨 Glassmorphism Components
 
-| Medicine | Quantity | Price | Status | Category |
-|----------|----------|-------|--------|----------|
-| Paracetamol 500mg | 120 | $2.50 | In Stock | Pain Relief |
-| Ibuprofen 400mg | 8 | $3.00 | Low | Pain Relief |
-| Amoxicillin 500mg | 50 | $5.75 | In Stock | Antibiotics |
-| Aspirin 100mg | 200 | $1.50 | In Stock | Pain Relief |
-| Metformin 500mg | 5 | $4.25 | Low | Diabetes |
-| Lisinopril 10mg | 75 | $6.50 | In Stock | Blood Pressure |
-| Omeprazole 20mg | 90 | $3.80 | In Stock | Gastro |
-| Vitamin C 1000mg | 3 | $2.00 | Low | Supplements |
-| Cetirizine 10mg | 110 | $2.75 | In Stock | Allergy |
-| Atorvastatin 20mg | 60 | $7.50 | In Stock | Cholesterol |
-| Salbutamol Inhaler | 35 | $8.99 | In Stock | Respiratory |
-| Loratadine 10mg | 12 | $3.25 | Low | Allergy |
-| Insulin Syringes | 180 | $0.50 | In Stock | Medical Supplies |
-| Bandages (Box of 100) | 4 | $5.50 | Low | Medical Supplies |
-| Cough Syrup 100ml | 40 | $2.99 | In Stock | Cold & Cough |
-
-## 🎯 How to Use
-
-### Adding a Medicine
-1. Click the "Add Medicine" tab
-2. Fill in the medicine details
-3. Click "Add Medicine" button
-4. Success notification appears and you're redirected to inventory
-
-### Searching Medicines
-1. Go to the "Overview" tab
-2. Use the search box to filter by medicine name or category
-3. Results update in real-time
-
-### Selling a Medicine
-1. Go to the "Inventory" tab
-2. Find the medicine in the table
-3. Click the "Sell" button
-4. Quantity decreases and sales are recorded
-5. Check Overview tab to see updated metrics
-
-### Editing a Medicine
-1. Go to the "Inventory" tab
-2. Click "Edit" button on the medicine row
-3. Form populates with current details
-4. Modify and add the medicine to save changes
-
-### Viewing Alerts
-1. Click the "Alerts" tab
-2. See all low stock and expiry warnings
-3. Alerts are sorted by priority
-4. Take action by editing or ordering medicines
-
-## ⚙️ Customization
-
-### Modifying Colors
-Edit the CSS variables in `styles.css`:
-
-```css
-:root {
-    --primary-color: #2563eb;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --danger-color: #ef4444;
-    /* ... more variables */
+### GlassCard
+```kotlin
+GlassCard(
+    onClick = { /* action */ }
+) {
+    // Content
 }
 ```
 
-### Adding More Sample Data
-Edit the `sampleMedicines` array in `app.js` to include more medicines.
-
-### Changing Dashboard Title
-Edit the header in `index.html`:
-
-```html
-<header class="header">
-    <h1>💊 Pharmacy Dashboard</h1>
-    <p class="subtitle">Stock Management System</p>
-</header>
+### GlassButton
+```kotlin
+GlassButton(onClick = { /* action */ }) {
+    Icon(Icons.Default.Play, contentDescription = null)
+    Text("Play")
+}
 ```
 
-## 🐛 Troubleshooting
+### GlassIconButton
+```kotlin
+GlassIconButton(
+    onClick = { /* action */ },
+    icon = Icons.Default.Settings,
+    contentDescription = "Settings"
+)
+```
 
-### Data not persisting
-- Check if browser allows local storage
-- Try clearing browser cache
-- Use incognito/private mode to test
+### GlassProgressBar
+```kotlin
+GlassProgressBar(
+    progress = 0.5f,
+    modifier = Modifier.fillMaxWidth()
+)
+```
 
-### Chart not displaying
-- Ensure Chart.js CDN link is working
-- Check browser console for errors
-- Try refreshing the page
+## 🔧 Configuration
 
-### Responsive design issues
-- Check browser zoom level (should be 100%)
-- Clear browser cache
-- Try a different browser
+### BuildConfig Fields
+- `VERSION_NAME`: App version string
+- `VERSION_CODE`: App version number
+- `BUILD_TIME`: Build timestamp
+- `ENABLE_LOGGING`: Debug logging flag
+- `ENABLE_CRASHLYTICS`: Crashlytics flag
 
-## 🤝 Contributing
+### ProGuard Rules
+Includes rules for:
+- Retrofit, OkHttp, Gson
+- ExoPlayer/Media3
+- Room, Coil
+- Firebase
+- Kotlin Coroutines & Serialization
 
-This is a demo/prototype dashboard. Feel free to:
-- Extend with more features
-- Add additional medicines
-- Customize styling
-- Integrate with a backend API
+## 📦 Gradle Version Catalog
+
+All dependencies managed in `gradle/libs.versions.toml`:
+- Centralized version management
+- Easy dependency updates
+- Type-safe accessors
+- Bundle definitions
+
+## 🧪 Testing
+
+### Unit Tests
+```bash
+./gradlew test
+```
+
+### Instrumented Tests
+```bash
+./gradlew connectedAndroidTest
+```
+
+### Test Coverage
+- ViewModels: Business logic testing
+- UseCases: Domain logic validation
+- Repository: Data layer mocking
 
 ## 📄 License
 
-Open source - free to use and modify
+```
+MIT License
 
-## 🎓 Learning Resources
+Copyright (c) 2025 AX Player
 
-- [MDN Web Docs](https://developer.mozilla.org)
-- [Chart.js Documentation](https://www.chartjs.org)
-- [CSS Grid & Flexbox](https://css-tricks.com)
-- [Local Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our contributing guidelines:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Code Style
+- Follow Kotlin coding conventions
+- Use meaningful variable names
+- Add comments for complex logic
+- Write unit tests for new features
+
+## 🐛 Bug Reports
+
+Found a bug? Please open an issue with:
+- Device model and Android version
+- Steps to reproduce
+- Expected vs actual behavior
+- Screenshots/logs if applicable
+
+## 💡 Feature Requests
+
+Have an idea? Open an issue with:
+- Detailed description
+- Use case/benefit
+- Mockups (if UI-related)
+
+## 📞 Contact
+
+- **GitHub**: [@yourusername](https://github.com/yourusername)
+- **Email**: contact@axplayer.com
+- **Website**: https://axplayer.com
+
+## 🙏 Acknowledgments
+
+- **AndroidX Media3**: Excellent video playback library
+- **Jetpack Compose**: Modern Android UI toolkit
+- **Material Design 3**: Beautiful design system
+- **Firebase**: Powerful backend services
+- **Timber**: Great logging library
 
 ---
 
-**Ready to deploy to GitHub Pages? Simply push the files and enable Pages in your repository settings!**
+<div align="center">
+Made with ❤️ by the AX Player Team
+</div>

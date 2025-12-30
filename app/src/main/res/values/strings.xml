@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AX Player</string>
+    
+    <!-- Navigation -->
+    <string name="nav_player">Player</string>
+    <string name="nav_library">Library</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Player Screen -->
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="forward">Forward</string>
+    <string name="rewind">Rewind</string>
+    <string name="fullscreen">Fullscreen</string>
+    <string name="exit_fullscreen">Exit Fullscreen</string>
+    <string name="settings">Settings</string>
+    <string name="playback_speed">Playback Speed</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="audio_track">Audio Track</string>
+    <string name="quality">Quality</string>
+    
+    <!-- Gesture Hints -->
+    <string name="gesture_hint_swipe_up_down">Swipe up/down to adjust brightness and volume</string>
+    <string name="gesture_hint_double_tap">Double tap left/right to seek</string>
+    <string name="gesture_hint_tap">Tap to show/hide controls</string>
+    
+    <!-- Library Screen -->
+    <string name="library_title">Video Library</string>
+    <string name="no_videos">No videos found</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="permission_required">Storage permission required to display videos</string>
+    <string name="search_videos">Search videos…</string>
+    <string name="filter_all">All</string>
+    <string name="filter_recent">Recent</string>
+    <string name="filter_favorites">Favorites</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_date">Date</string>
+    <string name="sort_duration">Duration</string>
+    <string name="sort_size">Size</string>
+    
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    
+    <!-- Playback Settings -->
+    <string name="playback_settings">Playback Settings</string>
+    <string name="resume_playback">Resume Playback</string>
+    <string name="resume_playback_desc">Continue from last position</string>
+    <string name="auto_play_next">Auto Play Next</string>
+    <string name="auto_play_next_desc">Automatically play next video</string>
+    <string name="default_playback_speed">Default Playback Speed</string>
+    <string name="speed_normal">1.0x (Normal)</string>
+    <string name="speed_1_25">1.25x</string>
+    <string name="speed_1_5">1.5x</string>
+    <string name="speed_1_75">1.75x</string>
+    <string name="speed_2">2.0x</string>
+    <string name="hardware_acceleration">Hardware Acceleration</string>
+    <string name="hardware_acceleration_desc">Use GPU for video decoding</string>
+    <string name="background_playback">Background Playback</string>
+    <string name="background_playback_desc">Continue playing in background</string>
+    
+    <!-- Display Settings -->
+    <string name="display_settings">Display Settings</string>
+    <string name="theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System Default</string>
+    <string name="oled_optimization">OLED Optimization</string>
+    <string name="oled_optimization_desc">True black for OLED displays</string>
+    <string name="subtitle_size">Subtitle Size</string>
+    <string name="subtitle_size_small">Small</string>
+    <string name="subtitle_size_medium">Medium</string>
+    <string name="subtitle_size_large">Large</string>
+    <string name="subtitle_size_xlarge">Extra Large</string>
+    <string name="keep_screen_on">Keep Screen On</string>
+    <string name="keep_screen_on_desc">Prevent screen timeout during playback</string>
+    
+    <!-- Gesture Settings -->
+    <string name="gesture_settings">Gesture Settings</string>
+    <string name="double_tap_seek">Double Tap Seek</string>
+    <string name="double_tap_seek_desc">Seek forward/backward with double tap</string>
+    <string name="seek_duration">Seek Duration</string>
+    <string name="seek_10s">10 seconds</string>
+    <string name="seek_15s">15 seconds</string>
+    <string name="seek_30s">30 seconds</string>
+    <string name="swipe_gesture">Swipe Gesture</string>
+    <string name="swipe_gesture_desc">Adjust brightness and volume</string>
+    <string name="haptic_feedback">Haptic Feedback</string>
+    <string name="haptic_feedback_desc">Vibrate on touch</string>
+    
+    <!-- Notification Settings -->
+    <string name="notification_settings">Notification Settings</string>
+    <string name="show_notifications">Show Notifications</string>
+    <string name="show_notifications_desc">Display playback controls</string>
+    <string name="notification_style">Notification Style</string>
+    <string name="notification_style_minimal">Minimal</string>
+    <string name="notification_style_detailed">Detailed</string>
+    
+    <!-- Storage Settings -->
+    <string name="storage_settings">Storage Settings</string>
+    <string name="cache_size">Cache Size</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="clear_cache_desc">Free up storage space</string>
+    <string name="cache_cleared">Cache cleared successfully</string>
+    
+    <!-- About -->
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="open_source_licenses">Open Source Licenses</string>
+    <string name="rate_app">Rate App</string>
+    <string name="share_app">Share App</string>
+    
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="edit">Edit</string>
+    <string name="close">Close</string>
+    <string name="retry">Retry</string>
+    <string name="loading">Loading…</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    
+    <!-- Errors -->
+    <string name="error_loading_video">Error loading video</string>
+    <string name="error_permission_denied">Permission denied</string>
+    <string name="error_no_video_selected">No video selected</string>
+    <string name="error_playback_failed">Playback failed</string>
+    <string name="error_unknown">Unknown error occurred</string>
+    
+    <!-- Video Info -->
+    <string name="video_duration">%1$s</string>
+    <string name="video_size">%1$s</string>
+    <string name="video_resolution">%1$dx%2$d</string>
+    <string name="video_format">%1$s</string>
+    
+    <!-- Time Format -->
+    <string name="time_format">%1$d:%2$02d</string>
+    <string name="time_format_hours">%1$d:%2$02d:%3$02d</string>
+</resources>

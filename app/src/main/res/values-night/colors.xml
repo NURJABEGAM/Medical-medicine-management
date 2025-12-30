@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Colors - OLED Optimized -->
+    <color name="status_bar_dark">#000000</color>
+    <color name="nav_bar_dark">#000000</color>
+    
+    <!-- Glass Effect Colors for Dark Mode -->
+    <color name="glass_light">#1AFFFFFF</color>
+    <color name="glass_medium">#26FFFFFF</color>
+    <color name="glass_dark">#0DFFFFFF</color>
+    <color name="glass_border">#26FFFFFF</color>
+</resources>
