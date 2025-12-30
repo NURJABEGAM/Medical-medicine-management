@@ -8,6 +8,9 @@ interface VideoDao {
     @Query("SELECT * FROM videos ORDER BY dateModified DESC")
     fun getAllVideos(): Flow<List<VideoEntity>>
     
+    @Query("SELECT * FROM videos ORDER BY dateModified DESC")
+    suspend fun getAllVideosSnapshot(): List<VideoEntity>
+    
     @Query("SELECT * FROM videos WHERE id = :id")
     fun getVideoById(id: String): Flow<VideoEntity?>
     
@@ -35,11 +38,20 @@ interface VideoDao {
     @Query("DELETE FROM videos WHERE id = :id")
     suspend fun deleteById(id: String)
     
-    @Query("UPDATE videos SET lastPlayedPosition = :position, lastPlayedTime = :time WHERE id = :id")
+    @Query("UPDATE videos SET lastPlayedPosition = :position, lastPlayedTime = :time, playCount = playCount + 1 WHERE id = :id")
     suspend fun updatePlaybackPosition(id: String, position: Long, time: Long)
     
     @Query("UPDATE videos SET isFavorite = NOT isFavorite WHERE id = :id")
     suspend fun toggleFavorite(id: String)
+    
+    @Query("UPDATE videos SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun setFavorite(id: String, isFavorite: Boolean)
+    
+    @Query("SELECT * FROM videos WHERE folder = :folder ORDER BY dateModified DESC")
+    fun getVideosByFolder(folder: String): Flow<List<VideoEntity>>
+    
+    @Query("SELECT DISTINCT folder FROM videos WHERE folder != '' ORDER BY folder ASC")
+    fun getAllFolders(): Flow<List<String>>
     
     @Query("DELETE FROM videos")
     suspend fun deleteAll()

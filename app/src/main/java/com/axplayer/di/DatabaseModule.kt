@@ -32,4 +32,16 @@ object DatabaseModule {
     fun provideVideoDao(database: AppDatabase): VideoDao {
         return database.videoDao()
     }
+
+    @Provides
+    @Singleton
+    fun providePlaylistDao(database: AppDatabase) = database.playlistDao()
+
+    @Provides
+    @Singleton
+    fun provideSubtitleDao(database: AppDatabase) = database.subtitleDao()
+
+    @Provides
+    @Singleton
+    fun provideBookmarkDao(database: AppDatabase) = database.bookmarkDao()
 }

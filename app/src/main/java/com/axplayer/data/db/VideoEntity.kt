@@ -23,9 +23,15 @@ data class VideoEntity(
     val height: Int = 0,
     val bitrate: Int = 0,
     val fps: Float = 0f,
+    val codec: String = "",
+    val audioCodec: String = "",
     val isFavorite: Boolean = false,
     val lastPlayedPosition: Long = 0L,
-    val lastPlayedTime: Long = 0L
+    val lastPlayedTime: Long = 0L,
+    val playCount: Int = 0,
+    val folder: String = "",
+    val hasSubtitles: Boolean = false,
+    val hasAudioTracks: Boolean = false
 ) {
     fun toDomain(): Video {
         return Video(
@@ -44,9 +50,15 @@ data class VideoEntity(
             height = height,
             bitrate = bitrate,
             fps = fps,
+            codec = codec,
+            audioCodec = audioCodec,
             isFavorite = isFavorite,
             lastPlayedPosition = lastPlayedPosition,
-            lastPlayedTime = lastPlayedTime
+            lastPlayedTime = lastPlayedTime,
+            playCount = playCount,
+            folder = folder,
+            hasSubtitles = hasSubtitles,
+            hasAudioTracks = hasAudioTracks
         )
     }
 
@@ -68,9 +80,15 @@ data class VideoEntity(
                 height = video.height,
                 bitrate = video.bitrate,
                 fps = video.fps,
+                codec = video.codec,
+                audioCodec = video.audioCodec,
                 isFavorite = video.isFavorite,
                 lastPlayedPosition = video.lastPlayedPosition,
-                lastPlayedTime = video.lastPlayedTime
+                lastPlayedTime = video.lastPlayedTime,
+                playCount = video.playCount,
+                folder = video.folder,
+                hasSubtitles = video.hasSubtitles,
+                hasAudioTracks = video.hasAudioTracks
             )
         }
     }

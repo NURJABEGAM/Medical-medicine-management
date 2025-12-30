@@ -18,9 +18,15 @@ data class Video(
     val height: Int = 0,
     val bitrate: Int = 0,
     val fps: Float = 0f,
+    val codec: String = "",
+    val audioCodec: String = "",
     val isFavorite: Boolean = false,
     val lastPlayedPosition: Long = 0L,
-    val lastPlayedTime: Long = 0L
+    val lastPlayedTime: Long = 0L,
+    val playCount: Int = 0,
+    val folder: String = "",
+    val hasSubtitles: Boolean = false,
+    val hasAudioTracks: Boolean = false
 ) {
     val durationFormatted: String
         get() {
@@ -65,5 +71,26 @@ data class Video(
             (lastPlayedPosition.toFloat() / duration.toFloat()).coerceIn(0f, 1f)
         } else {
             0f
+        }
+    
+    val qualityBadge: String
+        get() = when {
+            height >= 2160 -> "4K"
+            height >= 1440 -> "2K"
+            height >= 1080 -> "1080p"
+            height >= 720 -> "720p"
+            height >= 480 -> "480p"
+            else -> "SD"
+        }
+    
+    val bitrateFormatted: String
+        get() {
+            val kbps = bitrate / 1000.0
+            val mbps = kbps / 1000.0
+            return when {
+                mbps >= 1 -> String.format("%.2f Mbps", mbps)
+                kbps >= 1 -> String.format("%.2f Kbps", kbps)
+                else -> "Unknown"
+            }
         }
 }
