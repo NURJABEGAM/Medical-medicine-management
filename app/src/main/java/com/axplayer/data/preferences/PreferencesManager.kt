@@ -29,22 +29,49 @@ class PreferencesManager @Inject constructor(
         val DEFAULT_PLAYBACK_SPEED = floatPreferencesKey("default_playback_speed")
         val HARDWARE_ACCELERATION = booleanPreferencesKey("hardware_acceleration")
         val BACKGROUND_PLAYBACK = booleanPreferencesKey("background_playback")
+        val AUTO_LOAD_SUBTITLES = booleanPreferencesKey("auto_load_subtitles")
+        val PREFERRED_AUDIO_LANGUAGE = stringPreferencesKey("preferred_audio_language")
+        val PREFERRED_SUBTITLE_LANGUAGE = stringPreferencesKey("preferred_subtitle_language")
+        val LOOP_MODE = stringPreferencesKey("loop_mode")
+        val SLEEP_TIMER = intPreferencesKey("sleep_timer")
         
         // Display Settings
         val THEME = stringPreferencesKey("theme")
+        val COLOR_SCHEME = stringPreferencesKey("color_scheme")
         val OLED_OPTIMIZATION = booleanPreferencesKey("oled_optimization")
         val SUBTITLE_SIZE = stringPreferencesKey("subtitle_size")
         val KEEP_SCREEN_ON = booleanPreferencesKey("keep_screen_on")
+        val DYNAMIC_THEMING = booleanPreferencesKey("dynamic_theming")
+        val UI_LAYOUT = stringPreferencesKey("ui_layout")
+        
+        // Subtitle Settings
+        val SUBTITLE_FONT_FAMILY = stringPreferencesKey("subtitle_font_family")
+        val SUBTITLE_FONT_SIZE = intPreferencesKey("subtitle_font_size")
+        val SUBTITLE_TEXT_COLOR = longPreferencesKey("subtitle_text_color")
+        val SUBTITLE_OUTLINE_COLOR = longPreferencesKey("subtitle_outline_color")
+        val SUBTITLE_BACKGROUND_COLOR = longPreferencesKey("subtitle_background_color")
+        val SUBTITLE_BACKGROUND_OPACITY = floatPreferencesKey("subtitle_background_opacity")
+        val SUBTITLE_POSITION = stringPreferencesKey("subtitle_position")
+        val SUBTITLE_ALIGNMENT = stringPreferencesKey("subtitle_alignment")
+        val SUBTITLE_LINE_SPACING = floatPreferencesKey("subtitle_line_spacing")
+        val SUBTITLE_TIMING_OFFSET = longPreferencesKey("subtitle_timing_offset")
         
         // Gesture Settings
         val DOUBLE_TAP_SEEK = booleanPreferencesKey("double_tap_seek")
         val SEEK_DURATION = intPreferencesKey("seek_duration")
         val SWIPE_GESTURE = booleanPreferencesKey("swipe_gesture")
         val HAPTIC_FEEDBACK = booleanPreferencesKey("haptic_feedback")
+        val HAPTIC_INTENSITY = floatPreferencesKey("haptic_intensity")
+        val GESTURE_SENSITIVITY = floatPreferencesKey("gesture_sensitivity")
         
         // Notification Settings
         val SHOW_NOTIFICATIONS = booleanPreferencesKey("show_notifications")
         val NOTIFICATION_STYLE = stringPreferencesKey("notification_style")
+        val VIBRATION_ENABLED = booleanPreferencesKey("vibration_enabled")
+        
+        // Privacy Settings
+        val ANALYTICS_ENABLED = booleanPreferencesKey("analytics_enabled")
+        val CRASH_REPORTING_ENABLED = booleanPreferencesKey("crash_reporting_enabled")
         
         // Storage
         val CACHE_SIZE = longPreferencesKey("cache_size")
@@ -153,5 +180,94 @@ class PreferencesManager @Inject constructor(
 
     suspend fun clearPreferences() {
         dataStore.edit { it.clear() }
+    }
+
+    val subtitleSettings: Flow<com.axplayer.domain.entity.SubtitleSettings> = dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                Timber.e(exception, "Error reading subtitle settings")
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }
+        .map { preferences ->
+            com.axplayer.domain.entity.SubtitleSettings(
+                fontFamily = preferences[PreferencesKeys.SUBTITLE_FONT_FAMILY] ?: "sans-serif",
+                fontSize = preferences[PreferencesKeys.SUBTITLE_FONT_SIZE] ?: 16,
+                textColor = preferences[PreferencesKeys.SUBTITLE_TEXT_COLOR] ?: 0xFFFFFFFF,
+                outlineColor = preferences[PreferencesKeys.SUBTITLE_OUTLINE_COLOR] ?: 0xFF000000,
+                backgroundColor = preferences[PreferencesKeys.SUBTITLE_BACKGROUND_COLOR] ?: 0x00000000,
+                backgroundOpacity = preferences[PreferencesKeys.SUBTITLE_BACKGROUND_OPACITY] ?: 0f,
+                position = com.axplayer.domain.entity.SubtitlePosition.valueOf(
+                    preferences[PreferencesKeys.SUBTITLE_POSITION] 
+                        ?: com.axplayer.domain.entity.SubtitlePosition.BOTTOM.name
+                ),
+                alignment = com.axplayer.domain.entity.SubtitleAlignment.valueOf(
+                    preferences[PreferencesKeys.SUBTITLE_ALIGNMENT] 
+                        ?: com.axplayer.domain.entity.SubtitleAlignment.CENTER.name
+                ),
+                lineSpacing = preferences[PreferencesKeys.SUBTITLE_LINE_SPACING] ?: 1.2f,
+                timingOffset = preferences[PreferencesKeys.SUBTITLE_TIMING_OFFSET] ?: 0L
+            )
+        }
+
+    suspend fun updateSubtitleSettings(settings: com.axplayer.domain.entity.SubtitleSettings) {
+        dataStore.edit { prefs ->
+            prefs[PreferencesKeys.SUBTITLE_FONT_FAMILY] = settings.fontFamily
+            prefs[PreferencesKeys.SUBTITLE_FONT_SIZE] = settings.fontSize
+            prefs[PreferencesKeys.SUBTITLE_TEXT_COLOR] = settings.textColor
+            prefs[PreferencesKeys.SUBTITLE_OUTLINE_COLOR] = settings.outlineColor
+            prefs[PreferencesKeys.SUBTITLE_BACKGROUND_COLOR] = settings.backgroundColor
+            prefs[PreferencesKeys.SUBTITLE_BACKGROUND_OPACITY] = settings.backgroundOpacity
+            prefs[PreferencesKeys.SUBTITLE_POSITION] = settings.position.name
+            prefs[PreferencesKeys.SUBTITLE_ALIGNMENT] = settings.alignment.name
+            prefs[PreferencesKeys.SUBTITLE_LINE_SPACING] = settings.lineSpacing
+            prefs[PreferencesKeys.SUBTITLE_TIMING_OFFSET] = settings.timingOffset
+        }
+    }
+
+    suspend fun updateColorScheme(scheme: String) {
+        dataStore.edit { it[PreferencesKeys.COLOR_SCHEME] = scheme }
+    }
+
+    suspend fun updateDynamicTheming(enabled: Boolean) {
+        dataStore.edit { it[PreferencesKeys.DYNAMIC_THEMING] = enabled }
+    }
+
+    suspend fun updateAutoLoadSubtitles(enabled: Boolean) {
+        dataStore.edit { it[PreferencesKeys.AUTO_LOAD_SUBTITLES] = enabled }
+    }
+
+    suspend fun updatePreferredAudioLanguage(language: String) {
+        dataStore.edit { it[PreferencesKeys.PREFERRED_AUDIO_LANGUAGE] = language }
+    }
+
+    suspend fun updatePreferredSubtitleLanguage(language: String) {
+        dataStore.edit { it[PreferencesKeys.PREFERRED_SUBTITLE_LANGUAGE] = language }
+    }
+
+    suspend fun updateLoopMode(mode: String) {
+        dataStore.edit { it[PreferencesKeys.LOOP_MODE] = mode }
+    }
+
+    suspend fun updateSleepTimer(minutes: Int) {
+        dataStore.edit { it[PreferencesKeys.SLEEP_TIMER] = minutes }
+    }
+
+    suspend fun updateHapticIntensity(intensity: Float) {
+        dataStore.edit { it[PreferencesKeys.HAPTIC_INTENSITY] = intensity }
+    }
+
+    suspend fun updateGestureSensitivity(sensitivity: Float) {
+        dataStore.edit { it[PreferencesKeys.GESTURE_SENSITIVITY] = sensitivity }
+    }
+
+    suspend fun updateAnalyticsEnabled(enabled: Boolean) {
+        dataStore.edit { it[PreferencesKeys.ANALYTICS_ENABLED] = enabled }
+    }
+
+    suspend fun updateCrashReportingEnabled(enabled: Boolean) {
+        dataStore.edit { it[PreferencesKeys.CRASH_REPORTING_ENABLED] = enabled }
     }
 }
